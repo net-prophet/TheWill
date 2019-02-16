@@ -2,3 +2,4 @@ node_modules
 build
 .idea
 build_webpack
+*.log
