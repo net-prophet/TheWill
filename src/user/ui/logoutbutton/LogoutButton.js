@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const LogoutButton = ({ onLogoutUserClick }) => {
-  return(
-    <li className="pure-menu-item">
-      <a href="#" className="pure-menu-link" onClick={(event) => onLogoutUserClick(event)}>Logout</a>
-    </li>
-  )
-}
+  return (
+    // <li className="pure-menu-item">
+    //   <a href="#" className="pure-menu-link" onClick={(event) => onLogoutUserClick(event)}>Logout</a>
+    // </li>
+    <div>logout</div>
+  );
+};
 
-export default LogoutButton
+export default LogoutButton;
