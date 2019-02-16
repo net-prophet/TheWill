@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, browserHistory } from "react-router";
+import { Router, Route, IndexRoute, useRouterHistory } from "react-router";
 import { Provider } from "react-redux";
 import { syncHistoryWithStore } from "react-router-redux";
 import { UserIsAuthenticated } from "./util/wrappers.js";
@@ -16,6 +16,10 @@ import ListOrganizations from "./organization/ui/list/ListOrganizationsContainer
 
 // Redux Store
 import store from "./store";
+import {createHistory} from 'history';
+
+const PUBLIC_URL = process.env.NODE_ENV === 'production' ? '/TheWill' : '/'
+const browserHistory = useRouterHistory(createHistory)({ basename: PUBLIC_URL })
 
 const history = syncHistoryWithStore(browserHistory, store);
 
