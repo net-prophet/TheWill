@@ -11,8 +11,8 @@ contract VotingOrganizationFactory {
         return contracts.length;
     }
 
-    function newVotingOrganization() public returns(address newContract) {
-        VotingOrganization w = new VotingOrganization();
+    function newVotingOrganization(string memory _title, string memory _description) public returns(address newContract) {
+        VotingOrganization w = new VotingOrganization(_title, _description);
         contracts.push(address(w));
         return address(w);
     }
@@ -23,11 +23,16 @@ contract VotingOrganizationFactory {
 }
 
 contract VotingOrganization {
-    
+    string orgtitle;
+    string orgdescription;
+    address admin;
     uint proposalCount;
     address[] boardMembersList;
     address[] delegatesList;
     Proposal[] proposals;
+
+    mapping(address => bool) boardMembers;
+    mapping(address => bool) delegates;
 
     enum ProposalState {
         Open,
@@ -39,6 +44,7 @@ contract VotingOrganization {
     }
 
     struct Proposal {
+        uint proposalId;
         string title;
         string description;
         uint endBlock;
@@ -56,6 +62,28 @@ contract VotingOrganization {
     struct Delegate {
         address to;
         bool delegated;
+    }
+
+    event Open(uint indexed proposalId);
+    event Passed(uint indexed proposalId);
+    event Against(uint indexed proposalId);
+    event Forced(uint indexed proposalId);
+    event Rejected(uint indexed proposalId);
+    event Voted(uint indexed proposalId);
+    event Delegated(address voter);
+
+    constructor(string memory _orgtitle, string memory _orgdescription) public {
+        admin = msg.sender;
+        orgtitle = _orgtitle;
+        orgdescription = _orgdescription;
+        boardMembers[msg.sender] = true;
+        boardMembersList.push(msg.sender);
+    }
+
+    function createProposal(string memory title, string memory description, uint endBlock) public returns(uint) {
+        Proposal memory proposal;
+        proposal.proposalId = proposalCount;
+
     }
 
 
