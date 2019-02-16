@@ -2,9 +2,8 @@ import React from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
+import { loginTypes } from "../../utils";
 
-// Images
-// import uPortLogo from "../../../img/uport-logo.svg";
 import "./LoginButton.css";
 
 const styles = {
@@ -18,9 +17,6 @@ const styles = {
 const LoginButton = ({ classes, loginType, handleLoginType }) => {
   console.log(loginType);
   return (
-    // <li className="pure-menu-item">
-    //   <a href="#" className="pure-menu-link" onClick={(event) => onLoginUserClick(event)}><img className="uport-logo" src={uPortLogo} alt="UPort Logo" />Login with UPort</a>
-    // </li>
     <div className="loginButtonContainer">
       <Select
         value={loginType}
@@ -29,14 +25,11 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
           name: "age",
           id: "age-simple"
         }}
-
         className={classes.root}
       >
-        <MenuItem value="metamask">
-          <em>Metamask</em>
-        </MenuItem>
+        <MenuItem value="metamask">Metamask</MenuItem>
         <MenuItem value={"fortmatic"}>Fortmatic</MenuItem>
-        {/*<MenuItem value={"uport"}>Uport</MenuItem>*/}
+        <MenuItem value={"portis"}>Portis</MenuItem>
       </Select>
     </div>
   );

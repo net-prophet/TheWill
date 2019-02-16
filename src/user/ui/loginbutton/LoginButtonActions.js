@@ -26,3 +26,11 @@ export function loginUportUser() {
     uport.requestCredentials()
   }
 }
+
+export function loginPortisUser() {
+  return function(){
+    window.web3 = new Web3(window.portis.provider);
+    window.web3Provider = 'portis';
+    window.web3.eth.getAccounts()
+  }
+}
