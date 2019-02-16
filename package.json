@@ -51,9 +51,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@portis/web3": "^2.0.0-beta.11",
     "fortmatic": "^0.3.2",
     "history": "^3.0.0",
-    "@portis/web3": "^2.0.0-beta.11",
     "node-gyp": "^3.8.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -63,16 +63,18 @@
     "redux": "^3.6.0",
     "redux-auth-wrapper": "^1.0.0",
     "redux-thunk": "^2.2.0",
+    "solc": "^0.5.4",
+    "truffle": "^5.0.4",
     "truffle-hdwallet-provider": "^1.0.4",
     "uglifyjs-webpack-plugin": "^1.0.0",
     "uport-connect": "^0.7.3"
   },
   "homepage": "https://net-prophet.github.io/TheWill",
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "truffle compile && node scripts/start.js",
+    "build": "truffle compile && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "deploy": "PUBLIC_URL='/TheWill/' node scripts/build.js; echo 'Publishing...' ; node_modules/.bin/gh-pages -d build_webpack"
+    "deploy": "truffle compile && PUBLIC_URL='/TheWill/' node scripts/build.js; echo 'Publishing...' ; node_modules/.bin/gh-pages -d build_webpack"
   },
   "jest": {
     "collectCoverageFrom": [
