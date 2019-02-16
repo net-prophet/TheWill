@@ -11,7 +11,8 @@ const styles = {
     maxWidth: "650px",
     margin: "2em auto",
     fontSize: "90%",
-    lineHeight: "250%"
+    lineHeight: "250%",
+    textAlign: "center"
   }
 };
 class Home extends Component {
@@ -23,6 +24,11 @@ class Home extends Component {
         <Card className={classes.card} elevation={10}>
           <CardContent>
           <h3>An Open, Easy-To-Use Blockchain Voting dApp For Anyone</h3>
+
+          <h1><Link to="/organization/list">Organization Registry</Link></h1>
+          - or - 
+          <h1><Link to="/organization/create">Create a new Voting Organization</Link></h1>
+
           </CardContent>
           <CardActions>
             <Link to="/about">Learn More</Link>
