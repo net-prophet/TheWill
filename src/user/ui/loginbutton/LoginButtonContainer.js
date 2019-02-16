@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import LoginButton from "./LoginButton";
-import { loginUser, handleLoginType } from "./LoginButtonActions";
+import {loginFortmaticUser, handleLoginType, loginUportUser} from "./LoginButtonActions";
 
 const mapStateToProps = (state, ownProps) => {
   console.log(state);
@@ -9,15 +9,21 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoginUserClick: event => {
       event.preventDefault();
 
-      dispatch(loginUser());
+      dispatch(loginFortmaticUser());
     },
     handleLoginType: event => {
       dispatch(handleLoginType(event.target.value));
+      if (event.target.value === 'fortmatic')
+        dispatch(loginFortmaticUser());
+      if (event.target.value === 'uport')
+        dispatch(loginUportUser())
+      if (event.target.value === 'metamask')
+        window.web3Provider = 'metamask';
     }
   };
 };
