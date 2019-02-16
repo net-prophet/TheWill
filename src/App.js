@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { Link} from 'react-router'
 // UI Components
 import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";
 
@@ -82,7 +83,7 @@ class App extends Component {
           className="navbar pure-menu pure-menu-horizontal"
           style={{ height: 54 }}
         >
-          <div
+          <Link
             style={{
               display: "inline-block",
               color: "white",
@@ -91,17 +92,21 @@ class App extends Component {
               textAlign: "center",
               padding: "0.2em",
               lineHeight: "85%",
-              fontWeight: "500"
+              fontWeight: "500",
+              textDecoration: "none"
             }}
+            to="/"
           >
             The Will
             <br />
             Of The People
-          </div>
+          </Link>
           <ul className="pure-menu-list navbar-right">
             <div
               style={{
-                display: "inline-block"
+                display: "inline-block",
+                height: "100%",
+                verticalAlign: "bottom"
               }}
             >
               <LoginButtonContainer />
