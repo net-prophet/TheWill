@@ -1,4 +1,11 @@
-import { Connect } from 'uport-connect'
+// import { Connect } from 'uport-connect'
+//
+// export let uport = new Connect('TruffleBox')
+import Web3 from 'web3';
 
-export let uport = new Connect('TruffleBox')
-export const web3 = uport.getWeb3()
+if (window.ethereum) {
+    window.web3 = new Web3(window.ethereum);
+    try {
+        window.ethereum.enable();
+    } catch(e) { console.log('Error getting Metamask', e) }
+}
