@@ -1,5 +1,9 @@
-var SimpleStorage = artifacts.require("./SimpleStorage.sol");
+var VotingOrganizationFactory = artifacts.require("./VotingOrganizationFactory.sol");
+var VoteCoinFactory = artifacts.require("./VoteCoinFactory.sol");
+var VoteCoin = artifacts.require("./VoteCoin.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(SimpleStorage);
+  deployer.deploy(VotingOrganizationFactory);
+  deployer.deploy(VoteCoinFactory);
+  deployer.deploy(VoteCoin, "TEST", "TEST", 0, false, 1);
 };
