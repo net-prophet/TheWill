@@ -2,9 +2,8 @@ import React from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
+import { loginTypes } from "../../utils";
 
-// Images
-// import uPortLogo from "../../../img/uport-logo.svg";
 import "./LoginButton.css";
 
 const styles = {
@@ -29,10 +28,12 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
         }}
         className={classes.root}
       >
-        <MenuItem value="metamask">
-          <em>Metamask</em>
+        <MenuItem value={loginTypes.metamask.value}>
+          <em>{loginTypes.metamask.text}</em>
         </MenuItem>
-        <MenuItem value={"uport"}>Uport</MenuItem>
+        <MenuItem value={loginTypes.uport.value}>
+          {loginTypes.uport.text}
+        </MenuItem>
       </Select>
     </div>
   );

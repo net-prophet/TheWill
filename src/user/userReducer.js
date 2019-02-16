@@ -1,6 +1,7 @@
 import { HANDLE_LOGIN_TYPE } from "./ui/loginbutton/LoginButtonActions";
+import { loginTypes } from "./utils";
 const initialState = {
-  loginType: "metamask"
+  loginType: loginTypes.metamask.value
 };
 
 const userReducer = (state = initialState, action) => {
