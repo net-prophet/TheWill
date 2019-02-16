@@ -13,13 +13,16 @@ import Dashboard from "./layouts/dashboard/Dashboard";
 import Profile from "./user/layouts/profile/Profile";
 import CreateOrganization from "./organization/ui/create/CreateOrganizationContainer";
 import ListOrganizations from "./organization/ui/list/ListOrganizationsContainer";
+import OrganizationDetail from "./organization/ui/detail/";
 
 // Redux Store
 import store from "./store";
-import {createHistory} from 'history';
+import { createHistory } from "history";
 
-const PUBLIC_URL = process.env.NODE_ENV === 'production' ? '/TheWill' : '/'
-const browserHistory = useRouterHistory(createHistory)({ basename: PUBLIC_URL })
+const PUBLIC_URL = process.env.NODE_ENV === "production" ? "/TheWill" : "/";
+const browserHistory = useRouterHistory(createHistory)({
+  basename: PUBLIC_URL
+});
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -31,7 +34,11 @@ ReactDOM.render(
         <Route path="dashboard" component={UserIsAuthenticated(Dashboard)} />
         <Route path="profile" component={UserIsAuthenticated(Profile)} />
         <Route path="organization/create" component={CreateOrganization} />
-        <Route path="organization/list" component={ListOrganizations} />
+        <Route exact path="organization/list" component={ListOrganizations} />
+        <Route
+          path="organization/list/:detail"
+          component={OrganizationDetail}
+        />
         <Route path="about" component={About} />
       </Route>
     </Router>
