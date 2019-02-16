@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 // import TextField from "@material-ui/core/TextField";
 // import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";
 
 // import "./CreateOrganization.css";
 
@@ -18,7 +18,7 @@ const styles = theme => ({
 const Organization = ({ classes, contract }) => {
   return (
     <Card className={classes.card} raised>
-      <CardContent>{contract.address}</CardContent>
+      <CardContent><img alt="Contract blockie" src={"https://blockies.shipchain.io/" + contract.address + ".png?size=small"}/>{contract.address}</CardContent>
       <CardActions />
     </Card>
   );

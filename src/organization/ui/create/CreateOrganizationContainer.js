@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CreateOrganization from "./CreateOrganization";
 import { withRouter } from "react-router";
-import getContract from "../../../util/contracts.js";
+import { getContract } from "../../../util/contracts.js";
 import {} from "./CreateOrganizationActions";
 // import { withRouter } from "react-router-dom";
 
