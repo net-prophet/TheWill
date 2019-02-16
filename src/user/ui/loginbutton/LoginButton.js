@@ -9,7 +9,9 @@ import "./LoginButton.css";
 
 const styles = {
   root: {
-    width: 110
+    width: 110,
+    color: "white",
+    display: "inline"
   }
 };
 
@@ -27,12 +29,14 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
           name: "age",
           id: "age-simple"
         }}
+
         className={classes.root}
       >
         <MenuItem value="metamask">
           <em>Metamask</em>
         </MenuItem>
-        <MenuItem value={"uport"}>Uport</MenuItem>
+        <MenuItem value={"fortmatic"}>Fortmatic</MenuItem>
+        {/*<MenuItem value={"uport"}>Uport</MenuItem>*/}
       </Select>
     </div>
   );
