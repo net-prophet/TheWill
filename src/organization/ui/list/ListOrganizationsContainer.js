@@ -6,7 +6,7 @@ import { getContract, getContractAt } from "../../../util/contracts.js";
 class ListOrganizationsContainer extends Component {
   state = {
     organiCount: 0,
-    organizations: []
+    addresses: []
   };
 
   async componentWillMount() {
@@ -16,21 +16,15 @@ class ListOrganizationsContainer extends Component {
       const count = (await contract.getContractCount()).toNumber();
 
       if (count) {
-        const promises = [];
+        const addiPromises = [];
 
         for (let i = 0; i < count; i++) {
-          promises[i] = contract.getContractAddressByIndex(i);
+          addiPromises[i] = contract.getContractAddressByIndex(i);
         }
 
-        const addresses = await Promise.all(promises);
+        const addresses = await Promise.all(addiPromises);
 
-        if (addresses) {
-          let organizations = addresses.map(address => {
-            return getContractAt("VotingOrganization", address);
-          });
-          console.log(organizations);
-          this.setState({ organizations });
-        }
+        this.setState({ addresses });
       }
     } catch (err) {
       alert(err);

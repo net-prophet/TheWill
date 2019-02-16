@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CreateOrganization from "./CreateOrganization";
 import { withRouter } from "react-router";
-import getContract from "../../../util/contracts.js";
+import { getContract } from "../../../util/contracts.js";
 import {} from "./CreateOrganizationActions";
 // import { withRouter } from "react-router-dom";
 
@@ -26,7 +26,7 @@ class CreateOrganizationContainer extends Component {
     e.preventDefault();
 
     const contract = await getContract("VotingOrganizationFactory").deployed();
-
+    console.log(contract);
     try {
       const response = await contract.newVotingOrganization(text, description, {
         from: window.web3.eth.accounts[0]
