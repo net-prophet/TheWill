@@ -1,5 +1,5 @@
-// import { uport } from './../../../util/connectors.js'
-import { browserHistory } from "react-router";
+import { uport } from './../../../util/connectors.js'
+import Web3 from 'web3';
 
 export const HANDLE_LOGIN_TYPE = "HANDLE_LOGIN_TYPE";
 export function handleLoginType(type) {
@@ -9,20 +9,28 @@ export function handleLoginType(type) {
   };
 }
 
-export function loginUser() {
-  return function(dispatch) {
-    // UPort and its web3 instance are defined in ./../../../util/wrappers.
-    // Request uPort persona of account passed via QR
-    // uport.requestCredentials().then((credentials) => {
-    //   dispatch(userLoggedIn(credentials))
-    //   // Used a manual redirect here as opposed to a wrapper.
-    //   // This way, once logged in a user can still access the home page.
-    //   var currentLocation = browserHistory.getCurrentLocation()
-    //   if ('redirect' in currentLocation.query)
-    //   {
-    //     return browserHistory.push(decodeURIComponent(currentLocation.query.redirect))
-    //   }
-    //   return browserHistory.push('/dashboard')
-    // })
-  };
+export function loginFortmaticUser() {
+  return function(){
+    window.web3 = new Web3(window.fm.getProvider());
+    window.web3Provider = 'fortmatic';
+    window.fm.user.login().then(() => {
+      window.web3.eth.getAccounts();
+    });
+  }
+}
+
+export function loginUportUser() {
+  return function(){
+    window.web3 = uport.getWeb3();
+    window.web3Provider = 'uport';
+    uport.requestCredentials()
+  }
+}
+
+export function loginPortisUser() {
+  return function(){
+    window.web3 = new Web3(window.portis.provider);
+    window.web3Provider = 'portis';
+    window.web3.eth.getAccounts()
+  }
 }

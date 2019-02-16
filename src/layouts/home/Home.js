@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 
+import { Link } from "react-router";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 
 const styles = {
   card: {
-    maxWidth: "600px",
+    maxWidth: "650px",
     margin: "2em auto",
     fontSize: "90%",
     lineHeight: "250%"

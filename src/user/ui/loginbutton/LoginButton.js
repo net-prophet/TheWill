@@ -8,16 +8,15 @@ import "./LoginButton.css";
 
 const styles = {
   root: {
-    width: 110
+    width: 110,
+    color: "white",
+    display: "inline"
   }
 };
 
 const LoginButton = ({ classes, loginType, handleLoginType }) => {
   console.log(loginType);
   return (
-    // <li className="pure-menu-item">
-    //   <a href="#" className="pure-menu-link" onClick={(event) => onLoginUserClick(event)}><img className="uport-logo" src={uPortLogo} alt="UPort Logo" />Login with UPort</a>
-    // </li>
     <div className="loginButtonContainer">
       <Select
         value={loginType}
@@ -28,12 +27,9 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
         }}
         className={classes.root}
       >
-        <MenuItem value={loginTypes.metamask.value}>
-          <em>{loginTypes.metamask.text}</em>
-        </MenuItem>
-        <MenuItem value={loginTypes.uport.value}>
-          {loginTypes.uport.text}
-        </MenuItem>
+        <MenuItem value="metamask">Metamask</MenuItem>
+        <MenuItem value={"fortmatic"}>Fortmatic</MenuItem>
+        <MenuItem value={"portis"}>Portis</MenuItem>
       </Select>
     </div>
   );

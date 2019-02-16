@@ -8,6 +8,7 @@ import { UserIsAuthenticated } from "./util/wrappers.js";
 // Layouts
 import App from "./App";
 import Home from "./layouts/home/Home";
+import About from "./layouts/about/About";
 import Dashboard from "./layouts/dashboard/Dashboard";
 import Profile from "./user/layouts/profile/Profile";
 import CreateOrganization from "./organization/ui/create/CreateOrganizationContainer";
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path="profile" component={UserIsAuthenticated(Profile)} />
         <Route path="organization/create" component={CreateOrganization} />
         <Route path="organization/list" component={ListOrganizations} />
+        <Route path="about" component={About} />
       </Route>
     </Router>
   </Provider>,
