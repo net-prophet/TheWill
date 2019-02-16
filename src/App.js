@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router";
 
 // UI Components
 import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";

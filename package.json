@@ -15,7 +15,7 @@
     "cross-spawn": "4.0.2",
     "css-loader": "0.26.0",
     "detect-port": "1.0.1",
-    "dotenv": "2.0.0",
+    "dotenv": "^6.2.0",
     "eslint": "3.8.1",
     "eslint-config-react-app": "^0.5.0",
     "eslint-loader": "1.6.0",
@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "fortmatic": "^0.3.2",
     "history": "^3.0.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

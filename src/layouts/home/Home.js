@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
 
-
+import {Link} from 'react-router'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -23,11 +23,11 @@ class Home extends Component {
         <CardContent>
           <h3>An Open, Easy-To-Use Blockchain Voting dApp For Anyone</h3>
 
-          
-          
+
+
         </CardContent>
         <CardActions>
-          <a href="/about">About</a>
+          <Link to="/about">About</Link>
         </CardActions>
       </Card>
     </main>;
