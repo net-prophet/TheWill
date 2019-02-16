@@ -20,8 +20,8 @@ class Address extends Component {
       this.setState({_random: Math.random()})
     else if(window.web3Provider === 'fortmatic')
       this.setState({_account: window.web3.currentProvider.account})
-    else if(window.web3Provider === 'uport')
-      this.setState({_account: window.web3.currentProvider.account})
+    else if(window.web3Provider === 'portis')
+      this.setState({_account: window.web3.eth.accounts[0]})
   }
 
   render() {

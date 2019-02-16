@@ -33,9 +33,14 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
         className={classes.root}
       >
         <MenuItem value="metamask">
-          <em>Metamask</em>
+          Metamask
         </MenuItem>
-        <MenuItem value={"fortmatic"}>Fortmatic</MenuItem>
+        <MenuItem value={"fortmatic"}>
+            Fortmatic
+        </MenuItem>
+        <MenuItem value={"portis"}>
+            Portis
+        </MenuItem>
         {/*<MenuItem value={"uport"}>Uport</MenuItem>*/}
       </Select>
     </div>
