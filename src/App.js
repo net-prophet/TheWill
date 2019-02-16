@@ -61,7 +61,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
+        <nav className="navbar pure-menu pure-menu-horizontal" style={{height: 54}}>
           <div style={{
             display: 'inline-block',
             color: 'white',

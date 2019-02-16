@@ -61,6 +61,7 @@
     "truffle-hdwallet-provider": "^1.0.4",
     "uport-connect": "^0.7.3"
   },
+  "homepage": "https://net-prophet.github.io/TheWill",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
