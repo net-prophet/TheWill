@@ -56,6 +56,10 @@ class Organization extends React.Component {
           <h3>
             <b>Address:</b>{" "}
           </h3>{" "}
+          <img
+            alt="Contract blockie"
+            src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
+          />
           {address}
         </CardContent>
         <CardActions />

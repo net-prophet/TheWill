@@ -24,7 +24,21 @@ class Address extends Component {
   }
 
   render() {
-    return <span>{window.web3.eth.accounts[0] || "Please log in..."}</span>;
+    if (window.web3.eth.accounts[0])
+      return (
+        <span>
+          <img
+            alt="Wallet blockie"
+            src={
+              "https://blockies.shipchain.io/" +
+              window.web3.eth.accounts[0] +
+              ".png?size=small"
+            }
+          />{" "}
+          {window.web3.eth.accounts[0]}
+        </span>
+      );
+    else return <span>"Please log in..."</span>;
   }
 }
 
@@ -85,13 +99,25 @@ class App extends Component {
             Of The People
           </div>
           <ul className="pure-menu-list navbar-right">
-            <LoginButtonContainer />
-            <li
-              className="pure-menu-item"
-              style={{ fontSize: "85%", color: "white" }}
+            <div
+              style={{
+                display: "inline-block"
+              }}
             >
-              Your Address: <Address />
-            </li>
+              <LoginButtonContainer />
+            </div>
+            <div
+              style={{
+                display: "inline-block"
+              }}
+            >
+              <li
+                className="pure-menu-item"
+                style={{ fontSize: "85%", color: "white" }}
+              >
+                Your Address: <Address />
+              </li>
+            </div>
           </ul>
         </nav>
 
