@@ -7,18 +7,29 @@ import CardContent from "@material-ui/core/CardContent";
 // import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
-// import "./CreateOrganization.css";
-
 const styles = theme => ({
   card: {
-    idth: "80%"
+    width: "60%",
+    margin: 10
   }
 });
 
 const Organization = ({ classes, contract }) => {
   return (
     <Card className={classes.card} raised>
-      <CardContent>{contract.address}</CardContent>
+      <CardContent>
+        <h3>
+          <b>Title:</b>
+        </h3>{" "}
+        {}
+        <h3>
+          <b>Description:</b>{" "}
+        </h3>
+        <h3>
+          <b>Address:</b>{" "}
+        </h3>{" "}
+        {contract.address}
+      </CardContent>
       <CardActions />
     </Card>
   );

@@ -2,22 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListOrganizations from "./ListOrganizations";
 import { getContract, getContractAt } from "../../../util/contracts.js";
-// import {} from "./CreateOrganizationActions";
-// import { withRouter } from "react-router-dom";
 
 class ListOrganizationsContainer extends Component {
   state = {
     organiCount: 0,
     organizations: []
   };
-
-  //   handleTitleChange = e => {
-  //     this.setState({ text: e.target.value });
-  //   };
-
-  //   handleDescriptionChange = e => {
-  //     this.setState({ description: e.target.value });
-  //   };
 
   async componentWillMount() {
     const contract = await getContract("VotingOrganizationFactory").deployed();
