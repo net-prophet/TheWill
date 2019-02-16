@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import { Link } from "react-router";
-import { HiddenOnlyAuth, VisibleOnlyAuth } from "./util/wrappers.js";
-=======
->>>>>>> 0a0f43fac39af6208f5c4b1ef15c7b8d1f2da489
 
 // UI Components
 import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";
