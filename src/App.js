@@ -1,16 +1,34 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
-import { HiddenOnlyAuth, VisibleOnlyAuth } from "./util/wrappers.js";
-
 
 // UI Components
-import LogoutButtonContainer from "./user/ui/logoutbutton/LogoutButtonContainer";
+import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";
 
 // Styles
 import "./css/oswald.css";
 import "./css/open-sans.css";
 import "./css/pure-min.css";
 import "./App.css";
+
+class Address extends Component {
+  componentWillMount() {
+    setInterval(() => this.forceRedraw(), 1000);
+  }
+
+
+  forceRedraw() {
+    if(window.web3Provider === 'metamask')
+      this.setState({_random: Math.random()})
+    else if(window.web3Provider === 'fortmatic')
+      this.setState({_account: window.web3.currentProvider.account})
+    else if(window.web3Provider === 'uport')
+      this.setState({_account: window.web3.currentProvider.account})
+  }
+
+  render() {
+    return <span>{window.web3.eth.accounts[0] || "Please log in..."}</span>
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +42,6 @@ class App extends Component {
   componentWillMount() {
     this.loadAccounts();
     setTimeout(() => this.loadAccounts(), 500);
-    setInterval(() => this.loadAccounts(), 1000);
   }
 
   loadAccounts() {
@@ -35,22 +52,11 @@ class App extends Component {
       });
   }
 
+  forceRedraw() {
+    this.setState({_random: Math.random()})
+  }
+
   render() {
-    const OnlyAuthLinks = VisibleOnlyAuth(() => (
-      <span>
-        <li className="pure-menu-item">
-          <Link to="/dashboard" className="pure-menu-link">
-            Dashboard
-          </Link>
-        </li>
-        <li className="pure-menu-item">
-          <Link to="/profile" className="pure-menu-link">
-            Profile
-          </Link>
-        </li>
-        <LogoutButtonContainer />
-      </span>
-    ));
 
     if (!this.state.hasWeb3)
       return (
@@ -75,14 +81,14 @@ class App extends Component {
             The Will<br />Of The People
           </div>
           <ul className="pure-menu-list navbar-right">
+            <LoginButtonContainer />
             <li
               className="pure-menu-item"
               style={{ fontSize: "85%", color: "white" }}
             >
               Your Address:{" "}
-              {window.web3.eth.accounts[0] || "Please log in to metamask"}
+              <Address />
             </li>
-            <OnlyAuthLinks />
           </ul>
         </nav>
 
