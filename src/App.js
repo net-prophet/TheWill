@@ -66,22 +66,18 @@ class App extends Component {
 
     return (
       <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-          <div
-            style={{
-              display: "inline-block",
-              color: "white",
-              fontFamily: "Great Vibes",
-              fontSize: "1.5em",
-              textAlign: "center",
-              padding: "0.2em",
-              lineHeight: "85%",
-              fontWeight: "500"
-            }}
-          >
-            The Will
-            <br />
-            Of The People
+        <nav className="navbar pure-menu pure-menu-horizontal" style={{height: 54}}>
+          <div style={{
+            display: 'inline-block',
+            color: 'white',
+            fontFamily: "Great Vibes",
+            fontSize: '1.5em',
+            textAlign: 'center',
+            padding: '0.2em',
+            lineHeight: '85%',
+            fontWeight: '500'
+            }}>
+            The Will<br />Of The People
           </div>
           <ul className="pure-menu-list navbar-right">
             <LoginButtonContainer />
