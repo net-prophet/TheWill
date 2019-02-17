@@ -5,6 +5,8 @@ import { Link} from 'react-router'
 import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon"
+import FileCopy from "@material-ui/icons/FileCopy"
 
 // Styles
 import "./css/oswald.css";
@@ -52,7 +54,7 @@ class Address extends Component {
 
                  }}
              >
-                 Copy to Wallet Address
+                 <FileCopy />
              </Button>
             </CopyToClipboard>
             </div>
