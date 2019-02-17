@@ -125,5 +125,11 @@ pre {
   -ms-flex-pack: center;
       justify-content: center;
 }
+.createProposalContainer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
 
-/*# sourceMappingURL=main.ffe78407.css.map*/
+/*# sourceMappingURL=main.bb6a4471.css.map*/
