@@ -41,11 +41,7 @@ ReactDOM.render(
           path="organization/:address"
           component={OrganizationDetail}
         />
-<<<<<<< HEAD
-        <Route path="/proposals/list" component={ListProposals} />
-=======
         {/*<Route path="votecoin/create" component={CreateVoteCoin} />*/}
->>>>>>> f6ed00b695927860f3449d3aa21a707e5c459c02
         <Route path="about" component={About} />
       </Route>
     </Router>

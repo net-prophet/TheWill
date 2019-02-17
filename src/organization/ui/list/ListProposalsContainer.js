@@ -13,7 +13,7 @@ class ListProposalsContainer extends Component {
     const contract = await getContract("VotingOrganization").deployed();
 
     try {
-      const count = (await contract.getProposalCount(console.log)).toNumber();
+      const count = (await contract.getProposalCount()).toNumber();
       console.log(count)
       if (count) {
         const addiPromises = [];

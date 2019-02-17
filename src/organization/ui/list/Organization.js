@@ -5,8 +5,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { Link } from "react-router";
 import { getContractAt } from "../../../util/contracts";
-import CreateProposalCont from "../create/CreateProposalContainer";
-import ListProposalsCont from "./ListProposalsContainer";
 
 const styles = theme => ({
   card: {
@@ -38,7 +36,7 @@ class Organization extends React.Component {
     }
   }
   render() {
-    console.log(CreateProposalCont);
+    
     const { classes, address } = this.props;
     if (this.state.loading) return <div>Loading...</div>;
     return (

@@ -6,13 +6,9 @@ import VoteCoin from "../../build/contracts/VoteCoin.json";
 
 window.artifacts = {
   VotingOrganizationFactory: VotingOrganizationFactory,
-<<<<<<< HEAD
-  VotingOrganization: VotingOrganization, 
-=======
   VotingOrganization: VotingOrganization,
   VoteCoinFactory: VoteCoinFactory,
   VoteCoin: VoteCoin
->>>>>>> f6ed00b695927860f3449d3aa21a707e5c459c02
 };
 
 export function getContractAt(name, at) {

@@ -6,6 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import { getContractAt } from "../../../util/contracts"
 import { withRouter, Link } from "react-router";
+import CreateProposalCont from "../create/CreateProposalContainer";
+import ListProposalsCont from "../list/ListProposalsContainer";
 
 const styles = theme => ({
   card: {
@@ -25,7 +27,7 @@ class OrganizationDetail extends React.Component {
     this.state = {
       title: null,
       description: null,
-      loading: false
+      loading: false,
     };
   }
   componentWillMount() {
@@ -64,6 +66,8 @@ class OrganizationDetail extends React.Component {
               </Link>
             </h2>
             {this.state.description}</CardContent>
+            <CreateProposalCont contract={this.contract} />
+            <ListProposalsCont contract={this.contract} />
           <CardActions />
         </Card>
       </Grid>
