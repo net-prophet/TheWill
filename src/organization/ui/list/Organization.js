@@ -30,6 +30,7 @@ class Organization extends React.Component {
           title: result[0],
           description: result[1],
           targetCoin: result[2],
+          coinSymbol: result[3],
           loading: false,
           loaded: true
         })
@@ -61,7 +62,7 @@ class Organization extends React.Component {
            <img
            alt="Contract blockie"
            src={"https://blockies.shipchain.io/" + this.state.targetCoin + ".png?size=small"}
-           />{this.state.targetCoin.substring(0, 8)}
+           />{this.state.targetCoin.substring(0, 8)} - {this.state.coinSymbol}
           <h3>
             <b>Contract Address:</b>{" "}
           </h3>{" "}

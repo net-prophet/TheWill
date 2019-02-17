@@ -70,17 +70,14 @@ class CreateOrganizationContainer extends Component {
 
            console.log("Deployed new Coin Address", targetAddress)
            const coin = getContractAt("VoteCoin", targetAddress);
-           await organization.setTargetCoin(targetAddress, from, (err, ok) => console.log('Set target coin OK!'));
-
            //coin.setTargetVotingOrganization(orgAddress, from, async (err, ok) => { console.log('Set voting org OK!') });
         } else {
           console.log('Using stake-weighted coin at', targetAddress)
-          await organization.setTargetCoin(targetAddress, from, (err, ok) => console.log('Set target coin OK!'));
-
         }
-
-
-        router.push("/organization/"+orgAddress);
+        await organization.setTargetCoin(targetAddress, from, (err, ok) => {
+          console.log('Set target coin OK!');
+          setTimeout(() => router.push("/organization/"+orgAddress), 1000);
+        })
       }
     } catch (err) {
       alert(err);
