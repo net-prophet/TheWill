@@ -12,14 +12,18 @@ import "./App.css";
 
 class Address extends Component {
   componentWillMount() {
-    setInterval(() => this.forceRedraw(), 1000);
+    setInterval(() => {
+        console.log("Interval set")
+        this.forceRedraw()}, 1000);
   }
 
   forceRedraw() {
     if (window.web3Provider === "metamask")
       this.setState({ _random: Math.random() });
-    else if (window.web3Provider === "fortmatic")
-      this.setState({ _account: window.web3.currentProvider.account });
+    else if (window.web3Provider === "fortmatic") {
+        console.log("Fortmatic")
+        this.setState({_account: window.web3.currentProvider.account});
+    }
     else if (window.web3Provider === "portis")
       this.setState({ _account: window.web3.eth.accounts[0] });
   }
