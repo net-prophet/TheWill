@@ -3,9 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-// import TextField from "@material-ui/core/TextField";
-// import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router";
 import { getContractAt } from "../../../util/contracts";
 
 const styles = theme => ({
@@ -60,7 +58,7 @@ class Organization extends React.Component {
             alt="Contract blockie"
             src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
           />
-          {address}
+          <Link to={`/organization/list/${address}`}>{address}</Link>
         </CardContent>
         <CardActions />
       </Card>

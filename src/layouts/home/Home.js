@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-
 import { Link } from "react-router";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -23,12 +22,16 @@ class Home extends Component {
       <main className="container">
         <Card className={classes.card} elevation={10}>
           <CardContent>
-          <h3>An Open, Easy-To-Use Blockchain Voting dApp For Anyone</h3>
-
-          <h1><Link to="/organization/list">Organization Registry</Link></h1>
-          - or - 
-          <h1><Link to="/organization/create">Create a new Voting Organization</Link></h1>
-
+            <h3>An Open, Easy-To-Use Blockchain Voting dApp For Anyone</h3>
+            <h1>
+              <Link to="/organization/list">Organization Registry</Link>
+            </h1>
+            - or -
+            <h1>
+              <Link to="/organization/create">
+                Create a new Voting Organization
+              </Link>
+            </h1>
           </CardContent>
           <CardActions>
             <Link to="/about">Learn More</Link>
