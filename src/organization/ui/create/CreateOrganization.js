@@ -98,9 +98,10 @@ const CreateOrganization = ({
             color="primary"
           />
           } label={switch_label}/>
+          {!weighted ? null : 
           <TextField
             id="standard-name"
-            label="Address"
+            label="Address of any token (ERC20, ERC721) to weight stakes with"
             type="text"
             value={address}
             disabled={!weighted}
@@ -108,7 +109,7 @@ const CreateOrganization = ({
             className={classes.textField}
             margin="normal"
             variant="outlined"
-          />
+          /> }
           <Grid item className={classes.button}>
             <Button variant="contained" color="primary" type="submit">
               Create

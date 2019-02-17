@@ -29,6 +29,7 @@ class Organization extends React.Component {
         this.setState({
           title: result[0],
           description: result[1],
+          targetCoin: result[2],
           loading: false,
           loaded: true
         })
@@ -55,15 +56,20 @@ class Organization extends React.Component {
             {this.state.description}
           </h3>
           <h3>
-            <b>Address:</b>{" "}
+            <b>Voting Coin:</b>{" "}
+          </h3>{" "}
+           <img
+           alt="Contract blockie"
+           src={"https://blockies.shipchain.io/" + this.state.targetCoin + ".png?size=small"}
+           />{this.state.targetCoin.substring(0, 8)}
+          <h3>
+            <b>Contract Address:</b>{" "}
           </h3>{" "}
           <img
             alt="Contract blockie"
             src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
           />
-
-          <Link to={`/organization/list/${address}`}>{address}</Link>
-          {address}
+          {address.substring(0, 8)}
         </CardContent>
         <CardActions />
       </Card>
