@@ -45,7 +45,7 @@ class Organization extends React.Component {
           <h2>
             <img
               alt="Contract blockie"
-              src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
+              src={"https://blockies.shipchain.io/" + address + ".png?size=medium"}
             /> &nbsp;
             <Link to={`/organization/${address}`}>
               {this.state.title}
