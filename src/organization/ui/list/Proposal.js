@@ -3,10 +3,10 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import { Link } from "react-router";
+// import TextField from "@material-ui/core/TextField";
+// import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import { getContractAt } from "../../../util/contracts";
-import CreateProposalCont from "../create/CreateProposalContainer";
-import ListProposalsCont from "./ListProposalsContainer";
 
 const styles = theme => ({
   card: {
@@ -15,7 +15,7 @@ const styles = theme => ({
   }
 });
 
-class Organization extends React.Component {
+class Proposal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +26,7 @@ class Organization extends React.Component {
   }
   componentWillMount() {
     if (this.props.address) {
+      console.log("MAKING NEW ORG CARD", this.props);
       this.contract = getContractAt("VotingOrganization", this.props.address);
       this.contract.getOrgDetails((err, result) =>
         this.setState({
@@ -38,7 +39,7 @@ class Organization extends React.Component {
     }
   }
   render() {
-    console.log(CreateProposalCont);
+    console.log(this.state);
     const { classes, address } = this.props;
     if (this.state.loading) return <div>Loading...</div>;
     return (
@@ -59,13 +60,7 @@ class Organization extends React.Component {
             alt="Contract blockie"
             src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
           />
-
-          <Link to={`/organization/list/${address}`}>{address}</Link>
-
           {address}
-          <CreateProposalCont contract={this.contract} />
-          <ListProposalsCont contract={this.contract} />
-
         </CardContent>
         <CardActions />
       </Card>
@@ -73,4 +68,4 @@ class Organization extends React.Component {
   }
 }
 
-export default withStyles(styles)(Organization);
+export default withStyles(styles)(Proposal);

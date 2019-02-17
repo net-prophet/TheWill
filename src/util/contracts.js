@@ -4,7 +4,7 @@ import VotingOrganization from "../../build/contracts/VotingOrganization.json";
 
 window.artifacts = {
   VotingOrganizationFactory: VotingOrganizationFactory,
-  VotingOrganization: VotingOrganization
+  VotingOrganization: VotingOrganization, 
 };
 
 export function getContractAt(name, at) {

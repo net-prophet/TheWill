@@ -9,7 +9,6 @@ def get_vote_count_at_block(contractAddress, proposalId, blockNumber):
 
 def fetch_proposal(contractAddress, proposalId):
     contract = w3.eth.contract(contractAddress, abi=ABI)
-    # print('proposals', contract.functions.getProposalCount().call())
     return contract.functions.fetchProposal(proposalId).call()
 
 def get_final_vote_count(contractAddress, proposalId):
