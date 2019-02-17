@@ -36,7 +36,7 @@ ReactDOM.render(
         <Route path="organization/create" component={CreateOrganization} />
         <Route exact path="organization/list" component={ListOrganizations} />
         <Route
-          path="organization/list/:detail"
+          path="organization/:address"
           component={OrganizationDetail}
         />
         <Route path="about" component={About} />

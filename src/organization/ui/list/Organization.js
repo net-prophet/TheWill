@@ -47,7 +47,7 @@ class Organization extends React.Component {
               alt="Contract blockie"
               src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
             /> &nbsp;
-            <Link to={`/organization/list/${address}`}>
+            <Link to={`/organization/${address}`}>
               {this.state.title}
             </Link>
           </h2>
