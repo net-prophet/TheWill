@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CreateProposal from "./CreateProposal";
 import { withRouter } from "react-router";
-import { getContract } from "../../../util/contracts.js";
 import {} from "./CreateOrganizationActions";
 // import { withRouter } from "react-router-dom";
 
@@ -27,14 +26,13 @@ class CreateProposalContainer extends Component {
 
   handleSubmit = async e => {
     const { text, description, duration } = this.state;
-    const { router } = this.props;
     e.preventDefault();
     const per_day = 40000 / 7
     window.web3.eth.getBlockNumber((err, currentBlock) => {
         const endBlock = duration * per_day + currentBlock;
         console.log('Duration:', duration, 'Current', currentBlock, 'EndBlock', endBlock)
         try {
-          const response = this.props.contract.createProposal(text, description, endBlock,
+          this.props.contract.createProposal(text, description, endBlock,
             {
             from: window.web3.eth.accounts[0]
             },

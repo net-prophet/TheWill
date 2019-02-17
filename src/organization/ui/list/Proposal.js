@@ -5,7 +5,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 // import TextField from "@material-ui/core/TextField";
 // import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
 import { getContractAt } from "../../../util/contracts";
 
 const styles = theme => ({
@@ -19,29 +18,18 @@ class Proposal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: null,
-      description: null,
-      loading: true
-    };
-  }
-  componentWillMount() {
-    if (this.props.address) {
-      console.log("MAKING NEW ORG CARD", this.props);
-      this.contract = getContractAt("VotingOrganization", this.props.address);
-      this.contract.getOrgDetails((err, result) =>
-        this.setState({
-          title: result[0],
-          description: result[1],
-          loading: false,
-          loaded: true
-        })
-      );
+        id: props.proposal[0],
+        title: props.proposal[1],
+        description: props.proposal[2],
+        endBlock: props.proposal[3],
+        creator: props.proposal[4],
+        status: props.proposal[5],
+        numVoters: props.proposal[6],
     }
   }
+
   render() {
-    console.log(this.state);
     const { classes, address } = this.props;
-    if (this.state.loading) return <div>Loading...</div>;
     return (
       <Card className={classes.card} raised>
         <CardContent>
@@ -54,13 +42,13 @@ class Proposal extends React.Component {
             {this.state.description}
           </h3>
           <h3>
-            <b>Address:</b>{" "}
+            <b>Creator:</b>{" "}
           </h3>{" "}
           <img
             alt="Contract blockie"
-            src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
+            src={"https://blockies.shipchain.io/" + this.state.creator + ".png?size=small"}
           />
-          {address}
+          {this.state.creator.substring(0,8)}
         </CardContent>
         <CardActions />
       </Card>

@@ -80,7 +80,7 @@ class CreateOrganizationContainer extends Component {
         }
 
 
-        router.push("/organization/list/"+orgAddress);
+        router.push("/organization/"+orgAddress);
       }
     } catch (err) {
       alert(err);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListOrganizations from "./ListOrganizations";
-import { getContract, getContractAt } from "../../../util/contracts.js";
+import { getContract } from "../../../util/contracts.js";
 
 class ListOrganizationsContainer extends Component {
   state = {

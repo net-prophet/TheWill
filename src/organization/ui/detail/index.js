@@ -8,6 +8,7 @@ import { getContractAt } from "../../../util/contracts"
 import { withRouter, Link } from "react-router";
 import CreateProposalCont from "../create/CreateProposalContainer";
 import ListProposalsCont from "../list/ListProposalsContainer";
+import { Button } from "@material-ui/core";
 
 const styles = theme => ({
   card: {
@@ -20,6 +21,23 @@ const styles = theme => ({
     padding: "55px 20px"
   }
 });
+
+class HidingDropdown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      show: false
+    }
+  }
+  render() {
+    if(!this.state.show)
+      return <Button
+        onClick={() => this.setState({show: true})}
+        >{this.props.label || "Click To Show"}</Button>
+    else
+      return this.props.children
+  }
+}
 
 class OrganizationDetail extends React.Component {
   constructor(props) {
@@ -66,10 +84,14 @@ class OrganizationDetail extends React.Component {
               </Link>
             </h2>
             {this.state.description}</CardContent>
-            <CreateProposalCont contract={this.contract} />
-            <ListProposalsCont contract={this.contract} />
+            <HidingDropdown label="+ Create a proposal">
+              <CreateProposalCont contract={this.contract} />
+            </HidingDropdown>
           <CardActions />
         </Card>
+
+        <ListProposalsCont contract={this.contract} organizationAddress={params.address}/>
+
       </Grid>
     );
   }
