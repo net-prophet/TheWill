@@ -11,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const ListProposals = ({ classes, title, description, addresses }) => {
+const ListProposals = ({ classes, proposals, contract}) => {
   return (
     <Grid
       container
@@ -20,10 +20,9 @@ const ListProposals = ({ classes, title, description, addresses }) => {
       alignItems="center"
       className={classes.gridFormContainer}
     >
-      {/* {addresses.map((address, i) => (
-        <Proposal key={i} address={address} />
-      ))} */}
-      List Proposals
+      {proposals.map((proposal, i) => (
+        <Proposal key={i} proposal={proposal} contract={contract} />
+      ))}
     </Grid>
   );
 };

@@ -13,7 +13,6 @@ import Dashboard from "./layouts/dashboard/Dashboard";
 import Profile from "./user/layouts/profile/Profile";
 import CreateOrganization from "./organization/ui/create/CreateOrganizationContainer";
 import ListOrganizations from "./organization/ui/list/ListOrganizationsContainer";
-import ListProposals from "./organization/ui/list/ListProposalsContainer";
 import OrganizationDetail from "./organization/ui/detail/";
 // import CreateVoteCoin from "./voteCoin/ui/create/CreateVoteCoinContainer";
 
