@@ -11,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const ListProposals = ({ classes, proposals, contract}) => {
+const ListProposals = ({ classes, proposals, contract }) => {
   return (
     <Grid
       container
@@ -21,7 +21,7 @@ const ListProposals = ({ classes, proposals, contract}) => {
       className={classes.gridFormContainer}
     >
       {proposals.map((proposal, i) => (
-        <Proposal key={i} proposal={proposal} contract={contract} />
+        <Proposal key={i} id={i} proposal={proposal} contract={contract} />
       ))}
     </Grid>
   );
