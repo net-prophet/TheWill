@@ -3,6 +3,10 @@ import React, { Component } from "react";
 import { Link} from 'react-router'
 // UI Components
 import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon"
+import FileCopy from "@material-ui/icons/FileCopy"
 
 // Styles
 import "./css/oswald.css";
@@ -18,8 +22,9 @@ class Address extends Component {
   forceRedraw() {
     if (window.web3Provider === "metamask")
       this.setState({ _random: Math.random() });
-    else if (window.web3Provider === "fortmatic")
-      this.setState({ _account: window.web3.currentProvider.account });
+    else if (window.web3Provider === "fortmatic"){
+        this.setState({_account: window.web3.currentProvider.account});
+     }
     else if (window.web3Provider === "portis")
       this.setState({ _account: window.web3.eth.accounts[0] });
   }
@@ -37,6 +42,22 @@ class Address extends Component {
             }
           />{" "}
           {window.web3.eth.accounts[0]}
+          <div
+              style={{
+                display: "inline-block"
+              }}
+            >
+            <CopyToClipboard text={window.web3.eth.accounts[0]}>
+             <Button
+                 style={{
+                     color: "white",
+
+                 }}
+             >
+                 <FileCopy />
+             </Button>
+            </CopyToClipboard>
+            </div>
         </span>
       );
     else return <span>"Please log in..."</span>;

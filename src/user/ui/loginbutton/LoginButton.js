@@ -2,7 +2,6 @@ import React from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
-import { loginTypes } from "../../utils";
 
 import "./LoginButton.css";
 
@@ -28,7 +27,7 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
         className={classes.root}
       >
         <MenuItem value="metamask">Metamask</MenuItem>
-        <MenuItem value={"fortmatic"}>Fortmatic</MenuItem>
+        {/*<MenuItem value={"fortmatic"}>Fortmatic</MenuItem>*/}
         <MenuItem value={"portis"}>Portis</MenuItem>
       </Select>
     </div>

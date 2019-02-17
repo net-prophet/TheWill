@@ -25,7 +25,7 @@ contract SafeMath {
 
 
 contract VotableToken {
-
+    string public symbol;
     function balanceOf(address) public view returns(uint);
 }
 
@@ -273,11 +273,15 @@ contract VotingOrganization is SafeMath {
         return proposal.voters[who].value;
     }
 
+    function getDelegate(address who) public view returns(address) {
+        return delegates[who].to;
+    }
+
     function getTokenBalance(address who) public view returns(uint) {
         return targetCoin.balanceOf(who);
     }
 
-    function addBoardMember(address who) public onlyBoardMember() returns(bool) {
+    function addBoardMember(address who) public /*onlyBoardMember()*/ returns(bool) {
         require(isBoardMember(who) == false, "The user is already a board member");
         boardMembers[who] = true;
         boardMembersList.push(who);
@@ -371,8 +375,8 @@ contract VotingOrganization is SafeMath {
         delegates[msg.sender].to = address(0);
     }
 
-    function getOrgDetails() public view returns(string memory title, string memory description) {
-        return (orgtitle, orgdescription);
+    function getOrgDetails() public view returns(string memory title, string memory description, address coin, string memory tokenSymbol) {
+        return (orgtitle, orgdescription, address(targetCoin), targetCoin.symbol());
 
     }
 
