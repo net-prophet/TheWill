@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Link} from 'react-router'
 // UI Components
 import LoginButtonContainer from "./user/ui/loginbutton/LoginButtonContainer";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import Button from "@material-ui/core/Button";
 
 // Styles
 import "./css/oswald.css";
@@ -12,18 +14,16 @@ import "./App.css";
 
 class Address extends Component {
   componentWillMount() {
-    setInterval(() => {
-        console.log("Interval set")
-        this.forceRedraw()}, 1000);
+    setInterval(() => this.forceRedraw(), 1000);
   }
 
   forceRedraw() {
     if (window.web3Provider === "metamask")
       this.setState({ _random: Math.random() });
-    else if (window.web3Provider === "fortmatic") {
-        console.log("Fortmatic")
+    else if (window.web3Provider === "fortmatic"){
+        console.log(this.state.account)
         this.setState({_account: window.web3.currentProvider.account});
-    }
+     }
     else if (window.web3Provider === "portis")
       this.setState({ _account: window.web3.eth.accounts[0] });
   }
@@ -41,6 +41,22 @@ class Address extends Component {
             }
           />{" "}
           {window.web3.eth.accounts[0]}
+          <div
+              style={{
+                display: "inline-block"
+              }}
+            >
+            <CopyToClipboard text={window.web3.eth.accounts[0]}>
+             <Button
+                 style={{
+                     color: "white",
+
+                 }}
+             >
+                 Copy to Wallet Address
+             </Button>
+            </CopyToClipboard>
+            </div>
         </span>
       );
     else return <span>"Please log in..."</span>;
