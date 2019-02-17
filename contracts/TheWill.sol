@@ -23,11 +23,15 @@ contract SafeMath {
     }
 }
 
+
 contract VotableToken {
+
     function balanceOf(address) public view returns(uint);
 }
 
+
 contract VotingOrganizationFactory {
+    event Created(uint indexed orgId, address indexed at);
     address[] contracts;
 
     function getContractCount() public view returns(uint) {
@@ -36,6 +40,7 @@ contract VotingOrganizationFactory {
 
     function newVotingOrganization(string memory _title, string memory _description) public returns(address newContract) {
         VotingOrganization w = new VotingOrganization(_title, _description);
+        emit Created(contracts.length, address(w));
         contracts.push(address(w));
         return address(w);
     }
@@ -45,9 +50,12 @@ contract VotingOrganizationFactory {
     }
 }
 
+
 contract VotingOrganization is SafeMath {
+
     string orgtitle;
     string orgdescription;
+    uint minProposalBlocks;
     address admin;
     uint proposalCount;
     address[] boardMembersList;
@@ -107,6 +115,7 @@ contract VotingOrganization is SafeMath {
         proposalCount = 0;
         orgtitle = _orgtitle;
         orgdescription = _orgdescription;
+        minProposalBlocks = 40000;
         boardMembers[admin] = true;
         boardMembersList.push(admin);
     }
@@ -121,6 +130,7 @@ contract VotingOrganization is SafeMath {
     }
 
     function createProposal(string memory title, string memory description, uint endBlock) public returns(uint) {
+        require(endBlock >= minProposalBlocks + block.number, "Users need more time to vote");
         Proposal memory proposal;
         uint proposalId = proposalCount;
         proposal.title = title;
@@ -364,6 +374,10 @@ contract VotingOrganization is SafeMath {
     function getOrgDetails() public view returns(string memory title, string memory description) {
         return (orgtitle, orgdescription);
 
+    }
+
+    function() external {
+        revert("Fallback function");
     }
 
 

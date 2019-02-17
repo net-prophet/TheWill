@@ -14,6 +14,7 @@ import Profile from "./user/layouts/profile/Profile";
 import CreateOrganization from "./organization/ui/create/CreateOrganizationContainer";
 import ListOrganizations from "./organization/ui/list/ListOrganizationsContainer";
 import OrganizationDetail from "./organization/ui/detail/";
+// import CreateVoteCoin from "./voteCoin/ui/create/CreateVoteCoinContainer";
 
 // Redux Store
 import store from "./store";
@@ -36,9 +37,10 @@ ReactDOM.render(
         <Route path="organization/create" component={CreateOrganization} />
         <Route exact path="organization/list" component={ListOrganizations} />
         <Route
-          path="organization/list/:detail"
+          path="organization/:address"
           component={OrganizationDetail}
         />
+        {/*<Route path="votecoin/create" component={CreateVoteCoin} />*/}
         <Route path="about" component={About} />
       </Route>
     </Router>

@@ -24,7 +24,6 @@ class Organization extends React.Component {
   }
   componentWillMount() {
     if (this.props.address) {
-      console.log("MAKING NEW ORG CARD", this.props);
       this.contract = getContractAt("VotingOrganization", this.props.address);
       this.contract.getOrgDetails((err, result) =>
         this.setState({
@@ -37,19 +36,21 @@ class Organization extends React.Component {
     }
   }
   render() {
-    console.log(this.state);
     const { classes, address } = this.props;
     if (this.state.loading) return <div>Loading...</div>;
     return (
       <Card className={classes.card} raised>
         <CardContent>
-          <h3>
-            <b>Title:</b>&nbsp;
-            <Link to={`/organization/list/${address}`}>
-              {this.state.title}}
-            </Link>
-          </h3>{" "}
-          {}
+          <h2>
+            <img
+              alt="Contract blockie"
+              src={
+                "https://blockies.shipchain.io/" + address + ".png?size=small"
+              }
+            />{" "}
+            &nbsp;
+            <Link to={`/organization/${address}`}>{this.state.title}</Link>
+          </h2>
           <h3>
             <b>Description:</b>&nbsp;
             {this.state.description}

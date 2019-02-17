@@ -4,9 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
-import "./CreateOrganization.css";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import CheckBox from "@material-ui/core/Checkbox/Checkbox";
+import "./CreateProposal.css";
 
 const styles = theme => ({
   container: {
@@ -35,16 +33,14 @@ const styles = theme => ({
   }
 });
 
-const CreateOrganization = ({
+const CreateProposal = ({
   classes,
   title,
   description,
-  weighted,
-  address,
-  onWeightedChange,
-  onAddressChange,
+  duration,
   onTitleChange,
   onDescriptionChange,
+  onDurationChange,
   onSubmit
 }) => {
   return (
@@ -64,7 +60,7 @@ const CreateOrganization = ({
           alignItems="center"
           className={classes.grid}
         >
-          <h1> Create an Organization</h1>
+          <h1> Create a Proposal</h1>
           <TextField
             id="standard-name"
             label="Title"
@@ -86,22 +82,12 @@ const CreateOrganization = ({
             rows="6"
             variant="outlined"
           />
-          <FormControlLabel control={
-            <CheckBox
-            checked={weighted}
-            value="StakeWeighted"
-            onChange={onWeightedChange}
-            className={classes.checkbox}
-            id="standard-checkbox"
-          />
-          } label="Are the Votes Stake-Weighted?"/>
           <TextField
             id="standard-name"
-            label="Address"
-            type="text"
-            value={address}
-            disabled={!weighted}
-            onChange={onAddressChange}
+            label="Approximate Duration (in days)"
+            type="number"
+            value={duration}
+            onChange={onDurationChange}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -117,4 +103,4 @@ const CreateOrganization = ({
   );
 };
 
-export default withStyles(styles)(CreateOrganization);
+export default withStyles(styles)(CreateProposal);
