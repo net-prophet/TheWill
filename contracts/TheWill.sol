@@ -25,7 +25,7 @@ contract SafeMath {
 
 
 contract VotableToken {
-
+    string public symbol;
     function balanceOf(address) public view returns(uint);
 }
 
@@ -375,8 +375,8 @@ contract VotingOrganization is SafeMath {
         delegates[msg.sender].to = address(0);
     }
 
-    function getOrgDetails() public view returns(string memory title, string memory description, address coin) {
-        return (orgtitle, orgdescription, address(targetCoin));
+    function getOrgDetails() public view returns(string memory title, string memory description, address coin, string memory tokenSymbol) {
+        return (orgtitle, orgdescription, address(targetCoin), targetCoin.symbol());
 
     }
 
