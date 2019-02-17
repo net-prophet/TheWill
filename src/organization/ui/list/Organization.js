@@ -44,7 +44,10 @@ class Organization extends React.Component {
       <Card className={classes.card} raised>
         <CardContent>
           <h3>
-            <b>Title:</b>&nbsp;{this.state.title}
+            <b>Title:</b>&nbsp;
+            <Link to={`/organization/list/${address}`}>
+              {this.state.title}}
+            </Link>
           </h3>{" "}
           {}
           <h3>
@@ -58,7 +61,6 @@ class Organization extends React.Component {
             alt="Contract blockie"
             src={"https://blockies.shipchain.io/" + address + ".png?size=small"}
           />
-          <Link to={`/organization/list/${address}`}>{address}</Link>
         </CardContent>
         <CardActions />
       </Card>
