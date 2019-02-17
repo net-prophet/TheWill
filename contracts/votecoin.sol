@@ -68,6 +68,12 @@ contract Owned {
 }
 
 
+contract HasBoardMembers {
+
+    function isBoardMember(address who) public view returns(bool);
+}
+
+
 contract VoteCoin is ERC20Interface, Owned, SafeMath {
 
     string public symbol;
@@ -76,6 +82,7 @@ contract VoteCoin is ERC20Interface, Owned, SafeMath {
     uint tokensIssued;
     bool public tradable;
     uint maxBalance;
+    HasBoardMembers targetVotingOrg;
 
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) allowed;
@@ -103,6 +110,11 @@ contract VoteCoin is ERC20Interface, Owned, SafeMath {
 
     function balanceOf(address tokenOwner) public view returns (uint) {
         return balances[tokenOwner];
+    }
+
+    function setTargetVotingOrganization(address target) public {
+        require(msg.sender == owner, "Must be the owner");
+        targetVotingOrg = HasBoardMembers(target);
     }
 
     function transfer(address to, uint tokens) public returns (bool) {
@@ -138,6 +150,7 @@ contract VoteCoin is ERC20Interface, Owned, SafeMath {
     }
 
     function mint(address to, uint tokens) public returns(bool) {
+        require(targetVotingOrg.isBoardMember(msg.sender), "You are not a board member");
         require(maxBalance == 0 || safeAdd(balances[to], tokens) <= maxBalance, "Cannot exceed max balance");
         balances[to] = safeAdd(tokens, balances[to]);
         tokensIssued = safeAdd(tokens, tokensIssued);
@@ -148,6 +161,7 @@ contract VoteCoin is ERC20Interface, Owned, SafeMath {
         revert("Fallback function");
     }
 }
+
 
 contract VoteCoinFactory {
     address[] contracts;

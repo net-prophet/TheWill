@@ -1,10 +1,14 @@
 import TruffleContract from "truffle-contract";
 import VotingOrganizationFactory from "../../build/contracts/VotingOrganizationFactory.json";
 import VotingOrganization from "../../build/contracts/VotingOrganization.json";
+import VoteCoinFactory from "../../build/contracts/VoteCoinFactory.json";
+import VoteCoin from "../../build/contracts/VoteCoin.json";
 
 window.artifacts = {
   VotingOrganizationFactory: VotingOrganizationFactory,
-  VotingOrganization: VotingOrganization
+  VotingOrganization: VotingOrganization,
+  VoteCoinFactory: VoteCoinFactory,
+  VoteCoin: VoteCoin
 };
 
 export function getContractAt(name, at) {
