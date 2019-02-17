@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 
 import "./CreateOrganization.css";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import CheckBox from "@material-ui/core/Checkbox/Checkbox";
+import Switch from "@material-ui/core/Switch";
 
 const styles = theme => ({
   container: {
@@ -41,12 +41,14 @@ const CreateOrganization = ({
   description,
   weighted,
   address,
+  switch_label,
   onWeightedChange,
   onAddressChange,
   onTitleChange,
   onDescriptionChange,
   onSubmit
 }) => {
+
   return (
     <Grid
       container
@@ -87,14 +89,15 @@ const CreateOrganization = ({
             variant="outlined"
           />
           <FormControlLabel control={
-            <CheckBox
+            <Switch
             checked={weighted}
             value="StakeWeighted"
             onChange={onWeightedChange}
             className={classes.checkbox}
             id="standard-checkbox"
+            color="primary"
           />
-          } label="Are the Votes Stake-Weighted?"/>
+          } label={switch_label}/>
           <TextField
             id="standard-name"
             label="Address"

@@ -11,7 +11,8 @@ class CreateOrganizationContainer extends Component {
     text: "",
     description: "",
     weighted: false,
-    address: ""
+    address: "",
+    switch_label: "1 Person 1 Vote"
   };
 
   handleTitleChange = e => {
@@ -24,6 +25,10 @@ class CreateOrganizationContainer extends Component {
 
   handleWeightedChange = e => {
       this.setState({ weighted: e.target.checked });
+      if (e.target.checked)
+        this.setState({switch_label: "Votes are Stake Weighted"})
+      else
+        this.setState({switch_label: "1 Person 1 Vote"})
   };
 
   handleAddressChange = e => {
@@ -32,7 +37,7 @@ class CreateOrganizationContainer extends Component {
 
 
   handleSubmit = async e => {
-    const { text, description, weighted, address } = this.state;
+    const { text, description, weighted, address, switch_label } = this.state;
     const { router } = this.props;
     const symbol = "VOTE";
     const name = "VoteCoin";
