@@ -218,7 +218,7 @@ class OrganizationDetail extends React.Component {
                 }
               />{" "}
               &nbsp;
-              <Link to={`/organization/list/${params.address}`}>
+              <Link to={`/organization/${params.address}`}>
                 {this.state.title}
               </Link>
             </h2>

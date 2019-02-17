@@ -88,7 +88,7 @@ class Proposal extends React.Component {
     const { classes } = this.props;
     const {
       voted,
-      votesFor
+      votesFor,
       // status,
       // title,
       // description,
@@ -120,7 +120,7 @@ class Proposal extends React.Component {
           />
           {this.state.creator.substring(0, 8)}
           <h3>
-            <b>Votes for:</b> {votesFor}
+            <b>Votes for:</b> {votesFor}<br />
           </h3>
           <h3>
             <b>

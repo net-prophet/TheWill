@@ -60,7 +60,12 @@ class About extends Component {
           obeyed. If the people do not trust the government to execute their will,
           a dApp cannot fix this &mdash; only revolution can.
           
-          
+          <h3>This project was part of the EthDenver 2019 Hackathon</h3>
+          We built the whole thing in under 36 hours. We only deployed it to the Rinkeby network
+          but we're glad to deploy it onto Mainnet or any EVM-compatible L2 sidechain depending on
+          what your needs are. Have questions? Want a bugfix? Need some help?
+          <a href="mailto:audrey@lwb.co">Contact Audrey</a> - we are eager to help you use all the
+          features of our voting app, no matter what your organization.
         </CardContent>
         <CardActions>
           <a href="https://github.com/net-prophet/thewill/">Learn More</a>
