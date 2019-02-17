@@ -4,8 +4,8 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
-import { getContractAt } from "../../../util/contracts";
-import { withRouter } from "react-router";
+import { getContractAt } from "../../../util/contracts"
+import { withRouter, Link } from "react-router";
 
 const styles = theme => ({
   card: {
@@ -28,23 +28,20 @@ class OrganizationDetail extends React.Component {
       loading: false
     };
   }
-
-  //   componentWillMount() {
-  //     if (this.props.address) {
-  //       console.log("MAKING NEW ORG CARD", this.props);
-  //       this.contract = getContractAt("VotingOrganization", this.props.address);
-  //       this.contract.getOrgDetails((err, result) =>
-  //         this.setState({
-  //           title: result[0],
-  //           description: result[1],
-  //           loading: false,
-  //           loaded: true
-  //         })
-  //       );
-  //     }
-  //   }
+  componentWillMount() {
+    if (this.props.params.address) {
+      this.contract = getContractAt("VotingOrganization", this.props.params.address);
+      this.contract.getOrgDetails((err, result) =>
+        this.setState({
+          title: result[0],
+          description: result[1],
+          loading: false,
+          loaded: true
+        })
+      );
+    }
+  }
   render() {
-    console.log(this.props);
     const { classes, params } = this.props;
     if (this.state.loading) return <div>Loading...</div>;
     return (
@@ -56,7 +53,17 @@ class OrganizationDetail extends React.Component {
         className={classes.gridFormContainer}
       >
         <Card className={classes.card} raised>
-          <CardContent>Address: {params.detail}</CardContent>
+          <CardContent>
+            <h2>
+            <img
+              alt="Contract blockie"
+              src={"https://blockies.shipchain.io/" + params.address + ".png?size=small"}
+            /> &nbsp;
+              <Link to={`/organization/list/${params.address}`}>
+                {this.state.title}
+              </Link>
+            </h2>
+            {this.state.description}</CardContent>
           <CardActions />
         </Card>
       </Grid>
