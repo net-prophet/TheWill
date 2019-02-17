@@ -43,31 +43,36 @@ class CreateOrganizationContainer extends Component {
 
     const organizationFactoryContract = await getContract("VotingOrganizationFactory").deployed();
     const voteCoinFactoryContract = await getContract("VoteCoinFactory").deployed();
+    let from = {from: window.web3.eth.accounts[0]}
 
     try {
-      const orgAddress = await organizationFactoryContract.newVotingOrganization.call(text, description, {
-        from: window.web3.eth.accounts[0]
-      });
-      //const organization = getContractAt("VotingOrganization", orgAddress);
+      const createOrg = await organizationFactoryContract.newVotingOrganization(text, description, from);
+
+      const orgAddress = createOrg.logs[0].args.at;
+      const organization = getContractAt("VotingOrganization", orgAddress);
 
       if (orgAddress) {
         console.log("Org Address", orgAddress)
         let targetAddress = address;
-        if(weighted) {
-           try {
-             targetAddress = await voteCoinFactoryContract.newVoteCoin.call(symbol, name, decimals, tradable, maxBalance, {
-              from: window.web3.eth.accounts[0]
-             });
-             console.log("Deployed new Coin Address", targetAddress)
-             //const coin = getContractAt("VoteCoin", targetAddress);
 
-             //await voteCoinContract.set
+        if(!weighted) {
+           try {
+             const createCoin = await voteCoinFactoryContract.newVoteCoin(symbol, name, decimals, tradable, maxBalance, from);
+             targetAddress = createCoin.logs[0].args.at;
            } catch (err) {
              alert(err);
            }
-        }
 
-        //await organization.setTargetCoin(targetAddress);
+           console.log("Deployed new Coin Address", targetAddress)
+           const coin = getContractAt("VoteCoin", targetAddress);
+           await organization.setTargetCoin(targetAddress, from, (err, ok) => console.log('Set target coin OK!'));
+
+           //coin.setTargetVotingOrganization(orgAddress, from, async (err, ok) => { console.log('Set voting org OK!') });
+        } else {
+          console.log('Using stake-weighted coin at', targetAddress)
+          await organization.setTargetCoin(targetAddress, from, (err, ok) => console.log('Set target coin OK!'));
+
+        }
 
 
         router.push("/organization/list/"+orgAddress);

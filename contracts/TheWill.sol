@@ -31,7 +31,7 @@ contract VotableToken {
 
 
 contract VotingOrganizationFactory {
-
+    event Created(uint indexed orgId, address indexed at);
     address[] contracts;
 
     function getContractCount() public view returns(uint) {
@@ -40,6 +40,7 @@ contract VotingOrganizationFactory {
 
     function newVotingOrganization(string memory _title, string memory _description) public returns(address newContract) {
         VotingOrganization w = new VotingOrganization(_title, _description);
+        emit Created(contracts.length, address(w));
         contracts.push(address(w));
         return address(w);
     }

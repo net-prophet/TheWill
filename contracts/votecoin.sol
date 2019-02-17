@@ -165,6 +165,8 @@ contract VoteCoin is ERC20Interface, Owned, SafeMath {
 
 contract VoteCoinFactory {
     address[] contracts;
+    event Created(uint indexed orgId, address indexed at);
+
 
     function getContractCount() public view returns(uint) {
         return contracts.length;
@@ -181,6 +183,7 @@ contract VoteCoinFactory {
         returns(address newContract)
     {
         VoteCoin v = new VoteCoin(symbol, name, decimals, tradable, maxBalance);
+        emit Created(contracts.length, address(v));
         contracts.push(address(v));
         return address(v);
     }
