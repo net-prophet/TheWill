@@ -27,7 +27,7 @@ const LoginButton = ({ classes, loginType, handleLoginType }) => {
         className={classes.root}
       >
         <MenuItem value="metamask">Metamask</MenuItem>
-        <MenuItem value={"fortmatic"}>Fortmatic</MenuItem>
+        {/*<MenuItem value={"fortmatic"}>Fortmatic</MenuItem>*/}
         <MenuItem value={"portis"}>Portis</MenuItem>
       </Select>
     </div>

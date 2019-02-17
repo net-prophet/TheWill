@@ -21,7 +21,6 @@ class Address extends Component {
     if (window.web3Provider === "metamask")
       this.setState({ _random: Math.random() });
     else if (window.web3Provider === "fortmatic"){
-        console.log(this.state.account)
         this.setState({_account: window.web3.currentProvider.account});
      }
     else if (window.web3Provider === "portis")
